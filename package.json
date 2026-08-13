@@ -12,18 +12,9 @@
     "naive-ui-admin",
     "vue-admin-template"
   ],
-  "homepage": "https://github.com/soybeanjs/soybean-admin",
-  "bugs": {
-    "url": "https://github.com/soybeanjs/soybean-admin/issues"
-  },
   "license": "MIT",
   "author": {
-    "name": "Soybean",
-    "email": "soybeanjs@outlook.com",
-    "url": "https://github.com/soybeanjs"
-  },
-  "repository": {
-    "url": "https://github.com/soybeanjs/soybean-admin.git"
+    "name": "calmpixel"
   },
   "type": "module",
   "scripts": {
