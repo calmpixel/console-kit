@@ -1,0 +1,6 @@
+// @ts-expect-error ignore type error of svg icons
+import 'virtual:svg-icons-register';
+import 'uno.css';
+import '../styles/css/global.css';
+import '../styles/css/admin-list.css';
+import '../styles/scss/admin-list.scss';

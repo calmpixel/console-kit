@@ -1,0 +1,22 @@
+/*
+  Do NOT style `.n-scrollbar-container` with @include scrollbar() —
+  Naive NScrollbar draws its own rail; styling native bar causes double scrollbars.
+
+  Menu tree now uses NScrollbar as well (same as DataTable).
+*/
+
+/* Keep native bar hidden inside any NScrollbar used by lists / menu tree. */
+.n-data-table .n-scrollbar > .n-scrollbar-container,
+.menu-tree__scroll.n-scrollbar > .n-scrollbar-container,
+.menu-tree__scroll > .n-scrollbar-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.n-data-table .n-scrollbar > .n-scrollbar-container::-webkit-scrollbar,
+.menu-tree__scroll.n-scrollbar > .n-scrollbar-container::-webkit-scrollbar,
+.menu-tree__scroll > .n-scrollbar-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}

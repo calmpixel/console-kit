@@ -1,0 +1,33 @@
+/* List body stays a height budget; wrap / tree are content-sized with max-height cap.
+   Overflow → Naive NDataTable / NScrollbar. Short content → no stretch. */
+
+.admin-table-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  width: 100%;
+  max-height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.admin-table-wrap > :not(.n-data-table):not(.n-scrollbar) {
+  flex-shrink: 0;
+}
+
+.admin-table-wrap > .n-data-table,
+.admin-table-wrap > .n-scrollbar {
+  flex: 0 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+.menu-tree-wrap {
+  flex: 0 1 auto;
+  width: 100%;
+  max-height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
