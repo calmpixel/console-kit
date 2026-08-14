@@ -13,13 +13,19 @@
         <stop offset="0.5" stop-color="rgb(var(--primary-500-color))" />
         <stop offset="1" stop-color="rgb(var(--primary-700-color))" />
       </linearGradient>
+      <linearGradient id="cs-m" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="rgb(var(--primary-200-color))" />
+        <stop offset="1" stop-color="rgb(var(--primary-400-color))" />
+      </linearGradient>
+      <linearGradient id="cs-t" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="rgb(var(--primary-100-color))" />
+        <stop offset="1" stop-color="rgb(var(--primary-300-color))" />
+      </linearGradient>
     </defs>
-    <!-- 菱形徽章：外框（旋转方形） -->
-    <path d="M64 8 L120 64 L64 120 L8 64 Z" fill="url(#cs-g)" />
-    <path d="M64 24.8 L103.2 64 L64 103.2 L24.8 64 Z" fill="#fff" class="logo-cut" />
-    <!-- 中央菱形（渐变）+ 白芯，多几何优美重合 -->
-    <path d="M64 42 L88 64 L64 86 L40 64 Z" fill="url(#cs-g)" />
-    <path d="M64 51 L79 64 L64 77 L49 64 Z" fill="#fff" />
+    <!-- 三层菱形错位叠加（颜色叠加，不做镂空） -->
+    <path d="M64 6 L122 64 L64 122 L6 64 Z" fill="url(#cs-g)" />
+    <path d="M74 14 L118 58 L74 102 L30 58 Z" fill="url(#cs-m)" opacity="0.9" />
+    <path d="M80 24 L110 54 L80 84 L50 54 Z" fill="url(#cs-t)" />
   </svg>
 </template>
 

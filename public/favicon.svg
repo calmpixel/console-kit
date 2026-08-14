@@ -4,9 +4,16 @@
       <stop offset="0" stop-color="#6d74ff" />
       <stop offset="1" stop-color="#3f47cc" />
     </linearGradient>
+    <linearGradient id="hm" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8b92ff" />
+      <stop offset="1" stop-color="#6d74ff" />
+    </linearGradient>
+    <linearGradient id="ht" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b8bfff" />
+      <stop offset="1" stop-color="#8b92ff" />
+    </linearGradient>
   </defs>
-  <path d="M64 8 L120 64 L64 120 L8 64 Z" fill="url(#hg)" />
-  <path d="M64 24.8 L103.2 64 L64 103.2 L24.8 64 Z" fill="#fff" />
-  <path d="M64 42 L88 64 L64 86 L40 64 Z" fill="url(#hg)" />
-  <path d="M64 51 L79 64 L64 77 L49 64 Z" fill="#fff" />
+  <path d="M64 6 L122 64 L64 122 L6 64 Z" fill="url(#hg)" />
+  <path d="M74 14 L118 58 L74 102 L30 58 Z" fill="url(#hm)" opacity="0.9" />
+  <path d="M80 24 L110 54 L80 84 L50 54 Z" fill="url(#ht)" />
 </svg>
