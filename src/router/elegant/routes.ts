@@ -1,6 +1,6 @@
 /* eslint-disable */
 /* prettier-ignore */
-// gokit routes (stripped from product). Regenerate carefully — keep business out.
+// auto-generated routes (business kept out). Regenerate carefully — keep business out.
 
 import type { GeneratedRoute } from '@elegant-router/types';
 

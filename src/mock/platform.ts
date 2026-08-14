@@ -137,7 +137,7 @@ export function applyPlatformMock(config: InternalAxiosRequestConfig): boolean {
     return respond({ items: adminUser.permissions.map(code => ({ code, name: code })) });
   }
   if (method === 'get' && url.includes('/branding')) {
-    return respond({ site_title: 'GokitHub.io', logo_text: 'Platform' });
+    return respond({ site_title: import.meta.env.VITE_APP_TITLE || 'Console', logo_text: 'Platform' });
   }
   if (method === 'get' && url.includes('/notifications/unread-count')) {
     return respond({ unread: 0 });

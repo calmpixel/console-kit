@@ -53,7 +53,7 @@ async function load() {
   if (error) return;
   const items = data?.items || {};
   form.value = {
-    'site.name': items['site.name'] ?? 'GokitHub.io',
+    'site.name': items['site.name'] ?? import.meta.env.VITE_APP_TITLE || '控制台',
     'site.notice': items['site.notice'] ?? '',
     'summary.ttl_hint': items['summary.ttl_hint'] ?? ''
   };
@@ -106,7 +106,7 @@ onMounted(load);
                   <label class="settings-field__label">站点名称</label>
                   <NInput
                     v-model:value="form['site.name']"
-                    placeholder="例如：GokitHub.io"
+                    placeholder="例如：我的控制台"
                     maxlength="64"
                     show-count
                   />
