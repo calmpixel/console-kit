@@ -1,19 +1,24 @@
 <svg width="100%" height="100%" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="hg" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#6d74ff" />
-      <stop offset="1" stop-color="#3f47cc" />
+    <linearGradient id="ht" x1="64" y1="6" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c9cfff" />
+      <stop offset="1" stop-color="#b8bfff" />
     </linearGradient>
-    <linearGradient id="hm" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+    <linearGradient id="hb" x1="64" y1="122" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3f47cc" />
+      <stop offset="1" stop-color="#6d74ff" />
+    </linearGradient>
+    <linearGradient id="hml" x1="6" y1="64" x2="64" y2="64" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#8b92ff" />
       <stop offset="1" stop-color="#6d74ff" />
     </linearGradient>
-    <linearGradient id="ht" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#b8bfff" />
-      <stop offset="1" stop-color="#8b92ff" />
+    <linearGradient id="hmr" x1="122" y1="64" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8b92ff" />
+      <stop offset="1" stop-color="#6d74ff" />
     </linearGradient>
   </defs>
-  <path d="M64 6 L122 64 L64 122 L6 64 Z" fill="url(#hg)" />
-  <path d="M74 14 L118 58 L74 102 L30 58 Z" fill="url(#hm)" opacity="0.9" />
-  <path d="M80 24 L110 54 L80 84 L50 54 Z" fill="url(#ht)" />
+  <path d="M64 6 L122 64 L6 64 Z" fill="url(#ht)" />
+  <path d="M122 64 L64 6 L64 122 Z" fill="url(#hmr)" />
+  <path d="M64 122 L6 64 L122 64 Z" fill="url(#hb)" />
+  <path d="M6 64 L64 122 L64 6 Z" fill="url(#hml)" />
 </svg>
