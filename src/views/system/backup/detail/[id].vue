@@ -13,13 +13,7 @@ import {
   NTag,
   NText
 } from 'naive-ui';
-import {
-  fetchBackup,
-  fetchBackupJob,
-  startRestore,
-  type BackupDetail,
-  type BackupJob
-} from '@/service/api';
+import { fetchBackup, fetchBackupJob, startRestore, type BackupDetail, type BackupJob } from '@/service/api';
 import { cellText } from '@/utils/cell-text';
 import { formatDateTime } from '@/utils/datetime';
 import { statusLabel } from '@/utils/status-label';
@@ -227,7 +221,7 @@ onUnmounted(() => {
             type="line"
             :percentage="progress"
             :status="activeJob.status === 'failed' ? 'error' : activeJob.status === 'done' ? 'success' : 'default'"
-            :indicator-placement="'inside'"
+            indicator-placement="inside"
             :processing="isRunning"
           />
           <div v-if="activeJob.note" class="text-13px opacity-70 break-all">{{ activeJob.note }}</div>

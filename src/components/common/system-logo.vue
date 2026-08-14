@@ -1,5 +1,12 @@
 <template>
-  <svg class="app-logo" width="100%" height="100%" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <svg
+    class="app-logo"
+    width="100%"
+    height="100%"
+    viewBox="0 0 128 128"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
     <defs>
       <linearGradient id="cs-g" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
         <stop offset="0" stop-color="rgb(var(--primary-300-color))" />

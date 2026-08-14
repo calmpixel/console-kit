@@ -37,10 +37,7 @@ const slots = useSlots();
         </div>
       </header>
 
-      <div
-        v-if="slots.filters || slots.toolbar || slots.actions"
-        class="admin-list-page__controls"
-      >
+      <div v-if="slots.filters || slots.toolbar || slots.actions" class="admin-list-page__controls">
         <div class="admin-list-page__filters min-w-0">
           <slot name="filters" />
         </div>

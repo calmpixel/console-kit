@@ -52,14 +52,14 @@ function wrapTopLevelRoute(route: ElegantConstRoute): ElegantConstRoute {
     name: shellName,
     path: route.path,
     component: LAYOUT_BASE,
-    meta: { ...(route.meta || {}) },
+    meta: { ...route.meta },
     children: [
       {
         ...route,
         path: '',
         component: viewComp,
         meta: {
-          ...(route.meta || {}),
+          ...route.meta,
           hideInMenu: true,
           activeMenu: shellName
         }

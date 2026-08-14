@@ -120,23 +120,182 @@ interface MockNotification {
 // ---------- 内存数据 ----------
 const db = {
   users: [
-    { id: 1, username: 'admin', display_name: 'Admin', avatar: '', disabled: false, role_ids: [1], created_at: nowISO(), updated_at: nowISO() },
-    { id: 2, username: 'alice', display_name: 'Alice', avatar: '', disabled: false, role_ids: [2], created_at: nowISO(), updated_at: nowISO() },
-    { id: 3, username: 'bob', display_name: 'Bob', avatar: '', disabled: true, role_ids: [2], created_at: nowISO(), updated_at: nowISO() }
+    {
+      id: 1,
+      username: 'admin',
+      display_name: 'Admin',
+      avatar: '',
+      disabled: false,
+      role_ids: [1],
+      created_at: nowISO(),
+      updated_at: nowISO()
+    },
+    {
+      id: 2,
+      username: 'alice',
+      display_name: 'Alice',
+      avatar: '',
+      disabled: false,
+      role_ids: [2],
+      created_at: nowISO(),
+      updated_at: nowISO()
+    },
+    {
+      id: 3,
+      username: 'bob',
+      display_name: 'Bob',
+      avatar: '',
+      disabled: true,
+      role_ids: [2],
+      created_at: nowISO(),
+      updated_at: nowISO()
+    }
   ] as MockUser[],
   roles: [
-    { id: 1, code: 'platform_super', name: '超级管理员', scope_kind: 'platform', scope_id: '1', builtin: true, permissions: [...ALL_PERMISSIONS], created_at: nowISO(), updated_at: nowISO() },
-    { id: 2, code: 'platform_admin', name: '平台管理员', scope_kind: 'platform', scope_id: '1', builtin: false, permissions: ['platform.dashboard.read', 'platform.user.manage', 'platform.logs.read'], created_at: nowISO(), updated_at: nowISO() }
+    {
+      id: 1,
+      code: 'platform_super',
+      name: '超级管理员',
+      scope_kind: 'platform',
+      scope_id: '1',
+      builtin: true,
+      permissions: [...ALL_PERMISSIONS],
+      created_at: nowISO(),
+      updated_at: nowISO()
+    },
+    {
+      id: 2,
+      code: 'platform_admin',
+      name: '平台管理员',
+      scope_kind: 'platform',
+      scope_id: '1',
+      builtin: false,
+      permissions: ['platform.dashboard.read', 'platform.user.manage', 'platform.logs.read'],
+      created_at: nowISO(),
+      updated_at: nowISO()
+    }
   ] as MockRole[],
   menus: [
-    { id: 1, parent_id: null, route_name: 'overview', path: '/overview', component: 'layout.base$view.overview', icon: 'mdi:view-dashboard-outline', order_no: 1, hide_in_menu: false, permission_code: '', status: 'enabled', title: '工作台', created_at: nowISO(), updated_at: nowISO() },
-    { id: 2, parent_id: null, route_name: 'system', path: '/system', component: 'layout.base', icon: 'mdi:cog-outline', order_no: 2, hide_in_menu: false, permission_code: '', status: 'enabled', title: '系统管理', created_at: nowISO(), updated_at: nowISO() },
-    { id: 3, parent_id: 2, route_name: 'system_settings', path: '/system/settings', component: 'view.system_settings', icon: 'mdi:tune-variant', order_no: 1, hide_in_menu: false, permission_code: 'platform.settings.manage', status: 'enabled', title: '系统设置', created_at: nowISO(), updated_at: nowISO() },
-    { id: 4, parent_id: 2, route_name: 'system_user', path: '/system/user', component: 'view.system_user', icon: 'mdi:account-group', order_no: 2, hide_in_menu: false, permission_code: 'platform.user.manage', status: 'enabled', title: '用户管理', created_at: nowISO(), updated_at: nowISO() },
-    { id: 5, parent_id: 2, route_name: 'system_role', path: '/system/role', component: 'view.system_role', icon: 'mdi:shield-account', order_no: 3, hide_in_menu: false, permission_code: 'platform.role.manage', status: 'enabled', title: '角色管理', created_at: nowISO(), updated_at: nowISO() },
-    { id: 6, parent_id: 2, route_name: 'system_menu', path: '/system/menu', component: 'view.system_menu', icon: 'mdi:menu', order_no: 4, hide_in_menu: false, permission_code: 'platform.menu.manage', status: 'enabled', title: '菜单管理', created_at: nowISO(), updated_at: nowISO() },
-    { id: 7, parent_id: 2, route_name: 'system_op-log', path: '/system/op-log', component: 'view.system_op-log', icon: 'mdi:script-text-outline', order_no: 5, hide_in_menu: false, permission_code: 'platform.logs.read', status: 'enabled', title: '操作日志', created_at: nowISO(), updated_at: nowISO() },
-    { id: 8, parent_id: 2, route_name: 'system_backup', path: '/system/backup', component: 'view.system_backup', icon: 'mdi:database-arrow-down-outline', order_no: 6, hide_in_menu: false, permission_code: 'platform.backup.manage', status: 'enabled', title: '备份恢复', created_at: nowISO(), updated_at: nowISO() }
+    {
+      id: 1,
+      parent_id: null,
+      route_name: 'overview',
+      path: '/overview',
+      component: 'layout.base$view.overview',
+      icon: 'mdi:view-dashboard-outline',
+      order_no: 1,
+      hide_in_menu: false,
+      permission_code: '',
+      status: 'enabled',
+      title: '工作台',
+      created_at: nowISO(),
+      updated_at: nowISO()
+    },
+    {
+      id: 2,
+      parent_id: null,
+      route_name: 'system',
+      path: '/system',
+      component: 'layout.base',
+      icon: 'mdi:cog-outline',
+      order_no: 2,
+      hide_in_menu: false,
+      permission_code: '',
+      status: 'enabled',
+      title: '系统管理',
+      created_at: nowISO(),
+      updated_at: nowISO()
+    },
+    {
+      id: 3,
+      parent_id: 2,
+      route_name: 'system_settings',
+      path: '/system/settings',
+      component: 'view.system_settings',
+      icon: 'mdi:tune-variant',
+      order_no: 1,
+      hide_in_menu: false,
+      permission_code: 'platform.settings.manage',
+      status: 'enabled',
+      title: '系统设置',
+      created_at: nowISO(),
+      updated_at: nowISO()
+    },
+    {
+      id: 4,
+      parent_id: 2,
+      route_name: 'system_user',
+      path: '/system/user',
+      component: 'view.system_user',
+      icon: 'mdi:account-group',
+      order_no: 2,
+      hide_in_menu: false,
+      permission_code: 'platform.user.manage',
+      status: 'enabled',
+      title: '用户管理',
+      created_at: nowISO(),
+      updated_at: nowISO()
+    },
+    {
+      id: 5,
+      parent_id: 2,
+      route_name: 'system_role',
+      path: '/system/role',
+      component: 'view.system_role',
+      icon: 'mdi:shield-account',
+      order_no: 3,
+      hide_in_menu: false,
+      permission_code: 'platform.role.manage',
+      status: 'enabled',
+      title: '角色管理',
+      created_at: nowISO(),
+      updated_at: nowISO()
+    },
+    {
+      id: 6,
+      parent_id: 2,
+      route_name: 'system_menu',
+      path: '/system/menu',
+      component: 'view.system_menu',
+      icon: 'mdi:menu',
+      order_no: 4,
+      hide_in_menu: false,
+      permission_code: 'platform.menu.manage',
+      status: 'enabled',
+      title: '菜单管理',
+      created_at: nowISO(),
+      updated_at: nowISO()
+    },
+    {
+      id: 7,
+      parent_id: 2,
+      route_name: 'system_op-log',
+      path: '/system/op-log',
+      component: 'view.system_op-log',
+      icon: 'mdi:script-text-outline',
+      order_no: 5,
+      hide_in_menu: false,
+      permission_code: 'platform.logs.read',
+      status: 'enabled',
+      title: '操作日志',
+      created_at: nowISO(),
+      updated_at: nowISO()
+    },
+    {
+      id: 8,
+      parent_id: 2,
+      route_name: 'system_backup',
+      path: '/system/backup',
+      component: 'view.system_backup',
+      icon: 'mdi:database-arrow-down-outline',
+      order_no: 6,
+      hide_in_menu: false,
+      permission_code: 'platform.backup.manage',
+      status: 'enabled',
+      title: '备份恢复',
+      created_at: nowISO(),
+      updated_at: nowISO()
+    }
   ] as MockMenu[],
   backups: [
     {
@@ -170,15 +329,128 @@ const db = {
     }
   ] as MockBackup[],
   opLogs: [
-    { id: 1, user_id: 1, username: 'admin', display_name: 'Admin', action: 'settings.update', target_type: 'settings', target_id: 'site', detail: { 'site.name': 'Console' }, ip: '127.0.0.1', method: 'PUT', path: '/api/console/v1/settings', status_code: 200, latency_ms: 12, request_id: 'mock-req-1', user_agent: 'Mozilla/5.0 (mock)', auth_type: 'jwt', auth_masked: 'adm***', created_at: nowISO() },
-    { id: 2, user_id: 1, username: 'admin', display_name: 'Admin', action: 'auth.login', target_type: 'auth', target_id: 'admin', detail: { source: 'password' }, ip: '127.0.0.1', method: 'POST', path: '/api/console/v1/auth/login', status_code: 200, latency_ms: 8, request_id: 'mock-req-2', user_agent: 'Mozilla/5.0 (mock)', auth_type: 'none', auth_masked: '', created_at: nowISO() },
-    { id: 3, user_id: 1, username: 'admin', display_name: 'Admin', action: 'backup.create', target_type: 'backup', target_id: '1', detail: { kind: 'backup' }, ip: '127.0.0.1', method: 'POST', path: '/api/console/v1/backups', status_code: 200, latency_ms: 430, request_id: 'mock-req-3', user_agent: 'Mozilla/5.0 (mock)', auth_type: 'jwt', auth_masked: 'adm***', created_at: nowISO() },
-    { id: 4, user_id: 2, username: 'alice', display_name: 'Alice', action: 'user.role.update', target_type: 'user', target_id: '3', detail: { role_ids: [2] }, ip: '10.0.0.5', method: 'PUT', path: '/api/console/v1/users/3/roles', status_code: 400, latency_ms: 3, request_id: 'mock-req-4', user_agent: 'curl/8.0', auth_type: 'jwt', auth_masked: 'ali***', created_at: nowISO() },
-    { id: 5, user_id: 1, username: 'admin', display_name: 'Admin', action: 'backup.restore', target_type: 'backup', target_id: '1', detail: { structure: true, data: true }, ip: '127.0.0.1', method: 'POST', path: '/api/console/v1/backups/1/restore', status_code: 500, latency_ms: 1200, request_id: 'mock-req-5', user_agent: 'Mozilla/5.0 (mock)', auth_type: 'jwt', auth_masked: 'adm***', created_at: nowISO() }
+    {
+      id: 1,
+      user_id: 1,
+      username: 'admin',
+      display_name: 'Admin',
+      action: 'settings.update',
+      target_type: 'settings',
+      target_id: 'site',
+      detail: { 'site.name': 'Console' },
+      ip: '127.0.0.1',
+      method: 'PUT',
+      path: '/api/console/v1/settings',
+      status_code: 200,
+      latency_ms: 12,
+      request_id: 'mock-req-1',
+      user_agent: 'Mozilla/5.0 (mock)',
+      auth_type: 'jwt',
+      auth_masked: 'adm***',
+      created_at: nowISO()
+    },
+    {
+      id: 2,
+      user_id: 1,
+      username: 'admin',
+      display_name: 'Admin',
+      action: 'auth.login',
+      target_type: 'auth',
+      target_id: 'admin',
+      detail: { source: 'password' },
+      ip: '127.0.0.1',
+      method: 'POST',
+      path: '/api/console/v1/auth/login',
+      status_code: 200,
+      latency_ms: 8,
+      request_id: 'mock-req-2',
+      user_agent: 'Mozilla/5.0 (mock)',
+      auth_type: 'none',
+      auth_masked: '',
+      created_at: nowISO()
+    },
+    {
+      id: 3,
+      user_id: 1,
+      username: 'admin',
+      display_name: 'Admin',
+      action: 'backup.create',
+      target_type: 'backup',
+      target_id: '1',
+      detail: { kind: 'backup' },
+      ip: '127.0.0.1',
+      method: 'POST',
+      path: '/api/console/v1/backups',
+      status_code: 200,
+      latency_ms: 430,
+      request_id: 'mock-req-3',
+      user_agent: 'Mozilla/5.0 (mock)',
+      auth_type: 'jwt',
+      auth_masked: 'adm***',
+      created_at: nowISO()
+    },
+    {
+      id: 4,
+      user_id: 2,
+      username: 'alice',
+      display_name: 'Alice',
+      action: 'user.role.update',
+      target_type: 'user',
+      target_id: '3',
+      detail: { role_ids: [2] },
+      ip: '10.0.0.5',
+      method: 'PUT',
+      path: '/api/console/v1/users/3/roles',
+      status_code: 400,
+      latency_ms: 3,
+      request_id: 'mock-req-4',
+      user_agent: 'curl/8.0',
+      auth_type: 'jwt',
+      auth_masked: 'ali***',
+      created_at: nowISO()
+    },
+    {
+      id: 5,
+      user_id: 1,
+      username: 'admin',
+      display_name: 'Admin',
+      action: 'backup.restore',
+      target_type: 'backup',
+      target_id: '1',
+      detail: { structure: true, data: true },
+      ip: '127.0.0.1',
+      method: 'POST',
+      path: '/api/console/v1/backups/1/restore',
+      status_code: 500,
+      latency_ms: 1200,
+      request_id: 'mock-req-5',
+      user_agent: 'Mozilla/5.0 (mock)',
+      auth_type: 'jwt',
+      auth_masked: 'adm***',
+      created_at: nowISO()
+    }
   ] as MockLog[],
   notifications: [
-    { id: 1, event: 'backup.done', title: '备份完成', body: '平台备份 platform-20260813-185600.bak 已完成', link: '', created_by: 1, created_at: nowISO(), read: false },
-    { id: 2, event: 'auth.login', title: '管理员登录', body: '用户 admin 登录控制台', link: '', created_by: 1, created_at: nowISO(), read: true }
+    {
+      id: 1,
+      event: 'backup.done',
+      title: '备份完成',
+      body: '平台备份 platform-20260813-185600.bak 已完成',
+      link: '',
+      created_by: 1,
+      created_at: nowISO(),
+      read: false
+    },
+    {
+      id: 2,
+      event: 'auth.login',
+      title: '管理员登录',
+      body: '用户 admin 登录控制台',
+      link: '',
+      created_by: 1,
+      created_at: nowISO(),
+      read: true
+    }
   ] as MockNotification[],
   settings: {
     'site.name': 'Console',
@@ -247,7 +519,10 @@ function filterOpLogs(query: Record<string, string>): MockLog[] {
   let list = db.opLogs;
   if (q) {
     list = list.filter(
-      l => l.username.toLowerCase().includes(q) || l.action.toLowerCase().includes(q) || (l.target_type || '').toLowerCase().includes(q)
+      l =>
+        l.username.toLowerCase().includes(q) ||
+        l.action.toLowerCase().includes(q) ||
+        (l.target_type || '').toLowerCase().includes(q)
     );
   }
   if (results.length) {
@@ -623,7 +898,11 @@ export function applyPlatformMock(config: InternalAxiosRequestConfig): boolean {
     return respond({ items: filterBackups(query) });
   }
   if (url === '/backups' && method === 'post') {
-    const job = makeBackupJob('backup', '手动备份', (body.options as Record<string, unknown>) || { structure: true, data: true });
+    const job = makeBackupJob(
+      'backup',
+      '手动备份',
+      (body.options as Record<string, unknown>) || { structure: true, data: true }
+    );
     db.backups.unshift(job);
     return respond({ job });
   }
@@ -636,7 +915,11 @@ export function applyPlatformMock(config: InternalAxiosRequestConfig): boolean {
       return respondBlob(new Blob([`mock backup data #${id}`], { type: 'application/octet-stream' }));
     }
     if (url.endsWith('/restore') && method === 'post') {
-      const restore = makeBackupJob('restore', `恢复自备份 #${id}`, (body.options as Record<string, unknown>) || { structure: true, data: true });
+      const restore = makeBackupJob(
+        'restore',
+        `恢复自备份 #${id}`,
+        (body.options as Record<string, unknown>) || { structure: true, data: true }
+      );
       restore.parent_id = id;
       backup.restores = backup.restores || [];
       backup.restores.unshift(restore);

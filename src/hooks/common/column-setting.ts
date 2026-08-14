@@ -36,7 +36,7 @@ function loadPersisted(userId: string, tableId: string): PersistedColumnCheck[] 
 }
 
 function savePersisted(userId: string, tableId: string, checks: TableColumnCheck[]) {
-  const all = { ...(localStg.get('tableColumnSetting') || {}) };
+  const all = { ...localStg.get('tableColumnSetting') };
   all[storageSlot(userId, tableId)] = checks.map(item => ({
     key: item.key,
     checked: !!item.checked,
@@ -123,10 +123,7 @@ export function createColumnChecks<T>(cols: DataTableColumns<T>): TableColumnChe
 }
 
 /** Apply order / visibility / fixed from column setting onto base columns. */
-export function applyColumnChecks<T>(
-  cols: DataTableColumns<T>,
-  checks: TableColumnCheck[]
-): DataTableColumns<T> {
+export function applyColumnChecks<T>(cols: DataTableColumns<T>, checks: TableColumnCheck[]): DataTableColumns<T> {
   const columnMap = new Map<string, (typeof cols)[number]>();
 
   cols.forEach(column => {
@@ -155,10 +152,7 @@ export function applyColumnChecks<T>(
  * Pass `tableId` to persist per login user in localStorage (pages isolated).
  * Pair with `<TableColumnSetting v-model:columns="columnChecks" />`.
  */
-export function useColumnSetting<T>(
-  createColumns: () => DataTableColumns<T>,
-  options: UseColumnSettingOptions = {}
-) {
+export function useColumnSetting<T>(createColumns: () => DataTableColumns<T>, options: UseColumnSettingOptions = {}) {
   const { tableId } = options;
   const authStore = useAuthStore();
   const appStore = useAppStore();

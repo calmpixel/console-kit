@@ -68,14 +68,7 @@ function onConfirm() {
 </script>
 
 <template>
-  <NPopover
-    v-model:show="show"
-    trigger="click"
-    :placement="placement"
-    :show-arrow="false"
-    display-directive="show"
-    raw
-  >
+  <NPopover v-model:show="show" trigger="click" :placement="placement" :show-arrow="false" display-directive="show" raw>
     <template #trigger>
       <NTooltip :disabled="show || showClear" placement="top">
         <template #trigger>
@@ -109,13 +102,7 @@ function onConfirm() {
     </template>
 
     <div class="date-range-filter__panel">
-      <NDatePicker
-        :value="draft"
-        :type="type"
-        panel
-        @update:value="onPanelUpdate"
-        @confirm="onConfirm"
-      />
+      <NDatePicker :value="draft" :type="type" panel @update:value="onPanelUpdate" @confirm="onConfirm" />
     </div>
   </NPopover>
 </template>

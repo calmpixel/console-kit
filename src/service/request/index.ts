@@ -149,10 +149,7 @@ export const request = createFlatRequest(
         backendErrorCode = String(backendData.error?.code || backendData.code || '');
       } else if (error.code === BACKEND_ERROR_CODE) {
         message =
-          error.response?.data?.error?.message ||
-          error.response?.data?.msg ||
-          error.response?.data?.message ||
-          message;
+          error.response?.data?.error?.message || error.response?.data?.msg || error.response?.data?.message || message;
         backendErrorCode = String(error.response?.data?.error?.code || error.response?.data?.code || '');
       }
 
@@ -214,4 +211,3 @@ export const demoRequest = createRequest(
     }
   }
 );
-

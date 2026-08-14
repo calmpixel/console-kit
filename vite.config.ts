@@ -44,16 +44,23 @@ export default defineConfig(configEnv => {
           timeout: 0,
           proxyTimeout: 0,
           configure: (proxy: { on: (event: string, fn: (...args: any[]) => void) => void }) => {
-            proxy.on('proxyRes', (proxyRes: { headers: Record<string, unknown> }, req: { url?: string }, res: { setHeader: (k: string, v: string) => void }) => {
-              const ct = String(proxyRes.headers['content-type'] || '');
-              const url = String(req.url || '');
-              if (ct.includes('text/event-stream') || url.includes('/stream')) {
-                // Disable intermediary buffering so EventSource gets frames immediately.
-                res.setHeader('Cache-Control', 'no-cache, no-transform');
-                res.setHeader('X-Accel-Buffering', 'no');
-                delete proxyRes.headers['content-encoding'];
+            proxy.on(
+              'proxyRes',
+              (
+                proxyRes: { headers: Record<string, unknown> },
+                req: { url?: string },
+                res: { setHeader: (k: string, v: string) => void }
+              ) => {
+                const ct = String(proxyRes.headers['content-type'] || '');
+                const url = String(req.url || '');
+                if (ct.includes('text/event-stream') || url.includes('/stream')) {
+                  // Disable intermediary buffering so EventSource gets frames immediately.
+                  res.setHeader('Cache-Control', 'no-cache, no-transform');
+                  res.setHeader('X-Accel-Buffering', 'no');
+                  delete proxyRes.headers['content-encoding'];
+                }
               }
-            });
+            );
           }
         },
         '/ui': {

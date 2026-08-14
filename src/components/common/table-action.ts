@@ -28,9 +28,5 @@ export function renderTableAction(opts: TableActionOptions): VNode {
 
 /** Wrap row actions with compact spacing (prefer over raw NSpace size 12). */
 export function renderTableActions(nodes: VNodeChild[]) {
-  return h(
-    NSpace,
-    { size: TABLE_ACTION_GAP, wrap: false },
-    { default: () => nodes }
-  );
+  return h(NSpace, { size: TABLE_ACTION_GAP, wrap: false }, { default: () => nodes });
 }

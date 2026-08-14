@@ -200,14 +200,27 @@ init();
   <DarkModeContainer class="size-full flex-y-center px-16px shadow-tab">
     <div ref="bsWrapper" class="h-full flex-1-hidden" @wheel="handleWheel">
       <BetterScroll ref="bsScroll" :options="{ scrollX: true, scrollY: false, click: !isPCFlag }" @click="removeFocus">
-        <div ref="tabRef" class="h-full flex pr-18px" :class="[
-          themeStore.tab.mode === 'chrome' || themeStore.tab.mode === 'slider' ? 'items-end' : 'items-center gap-12px'
-        ]">
-          <PageTab v-for="tab in tabStore.tabs" :key="tab.id" :[TAB_DATA_ID]="tab.id" :mode="themeStore.tab.mode"
-            :dark-mode="themeStore.darkMode" :active="tab.id === tabStore.activeTabId"
-            :active-color="themeStore.themeColor" :closable="!tabStore.isTabRetain(tab.id)"
-            @pointerdown="switchTab($event, tab)" @mousedown="handleMousedown($event, tab)" @close="handleCloseTab(tab)"
-            @contextmenu="handleContextMenu($event, tab.id)">
+        <div
+          ref="tabRef"
+          class="h-full flex pr-18px"
+          :class="[
+            themeStore.tab.mode === 'chrome' || themeStore.tab.mode === 'slider' ? 'items-end' : 'items-center gap-12px'
+          ]"
+        >
+          <PageTab
+            v-for="tab in tabStore.tabs"
+            :key="tab.id"
+            :[TAB_DATA_ID]="tab.id"
+            :mode="themeStore.tab.mode"
+            :dark-mode="themeStore.darkMode"
+            :active="tab.id === tabStore.activeTabId"
+            :active-color="themeStore.themeColor"
+            :closable="!tabStore.isTabRetain(tab.id)"
+            @pointerdown="switchTab($event, tab)"
+            @mousedown="handleMousedown($event, tab)"
+            @close="handleCloseTab(tab)"
+            @contextmenu="handleContextMenu($event, tab.id)"
+          >
             <template #prefix>
               <SvgIcon :icon="tab.icon" :local-icon="tab.localIcon" class="inline-block align-text-bottom text-16px" />
             </template>
@@ -219,9 +232,14 @@ init();
     <ReloadButton :loading="!appStore.reloadFlag" @click="refresh" />
     <FullScreen :full="appStore.fullContent" @click="appStore.toggleFullContent" />
   </DarkModeContainer>
-  <ContextMenu :visible="dropdown.visible" :tab-id="dropdown.tabId"
-    :disabled-keys="getContextMenuDisabledKeys(dropdown.tabId)" :x="dropdown.x" :y="dropdown.y"
-    @update:visible="handleDropdownVisible" />
+  <ContextMenu
+    :visible="dropdown.visible"
+    :tab-id="dropdown.tabId"
+    :disabled-keys="getContextMenuDisabledKeys(dropdown.tabId)"
+    :x="dropdown.x"
+    :y="dropdown.y"
+    @update:visible="handleDropdownVisible"
+  />
 </template>
 
 <style scoped></style>

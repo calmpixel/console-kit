@@ -93,16 +93,12 @@ function colVisible(key: MenuColKey) {
           <span v-else class="menu-tree__expand-spacer" />
           <SvgIcon v-if="node.icon" :icon="node.icon" class="menu-tree__icon" />
           <span v-else class="menu-tree__icon menu-tree__icon--empty" />
-          <span class="menu-tree__title-text" :title="node.title || node.route_name">{{
-            node.title || node.route_name
-          }}</span>
+          <span class="menu-tree__title-text" :title="node.title || node.route_name">
+            {{ node.title || node.route_name }}
+          </span>
           <NText v-if="node.hide_in_menu" depth="3" class="menu-tree__hide-tag">隐藏</NText>
         </span>
-        <span
-          v-if="colVisible('route_name')"
-          class="menu-tree__col menu-tree__col--route"
-          :title="node.route_name"
-        >
+        <span v-if="colVisible('route_name')" class="menu-tree__col menu-tree__col--route" :title="node.route_name">
           {{ node.route_name }}
         </span>
         <span v-if="colVisible('status')" class="menu-tree__col menu-tree__col--status">
@@ -110,18 +106,10 @@ function colVisible(key: MenuColKey) {
             {{ statusLabel(node.status) }}
           </NTag>
         </span>
-        <span
-          v-if="colVisible('created_at')"
-          class="menu-tree__col menu-tree__col--time"
-          :title="node.created_at"
-        >
+        <span v-if="colVisible('created_at')" class="menu-tree__col menu-tree__col--time" :title="node.created_at">
           {{ node.created_at || '-' }}
         </span>
-        <span
-          v-if="colVisible('updated_at')"
-          class="menu-tree__col menu-tree__col--time"
-          :title="node.updated_at"
-        >
+        <span v-if="colVisible('updated_at')" class="menu-tree__col menu-tree__col--time" :title="node.updated_at">
           {{ node.updated_at || '-' }}
         </span>
         <span v-if="colVisible('actions')" class="menu-tree__col menu-tree__col--actions">

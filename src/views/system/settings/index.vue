@@ -104,12 +104,7 @@ onMounted(load);
               <div class="settings-fields">
                 <div class="settings-field settings-field--half">
                   <label class="settings-field__label">站点名称</label>
-                  <NInput
-                    v-model:value="form['site.name']"
-                    placeholder="例如：我的控制台"
-                    maxlength="64"
-                    show-count
-                  />
+                  <NInput v-model:value="form['site.name']" placeholder="例如：我的控制台" maxlength="64" show-count />
                   <p class="settings-field__hint">显示在浏览器标题与控制台品牌位置</p>
                 </div>
 
@@ -133,9 +128,7 @@ onMounted(load);
             <div class="settings-callout">
               <div class="settings-callout__text">
                 <h3 class="settings-callout__title">仅展示提示</h3>
-                <p class="settings-callout__desc">
-                  下列文案只影响控制台说明，实际 `summary.ttl` 仍由服务端配置决定
-                </p>
+                <p class="settings-callout__desc">下列文案只影响控制台说明，实际 `summary.ttl` 仍由服务端配置决定</p>
               </div>
             </div>
 
@@ -146,11 +139,7 @@ onMounted(load);
               <div class="settings-fields">
                 <div class="settings-field settings-field--half">
                   <label class="settings-field__label">Summary TTL 提示</label>
-                  <NInput
-                    v-model:value="form['summary.ttl_hint']"
-                    placeholder="例如：60s"
-                    maxlength="32"
-                  />
+                  <NInput v-model:value="form['summary.ttl_hint']" placeholder="例如：60s" maxlength="32" />
                   <p class="settings-field__hint">建议与后端 `summary.ttl` 保持一致，例如 60s</p>
                 </div>
               </div>
@@ -199,7 +188,9 @@ onMounted(load);
   padding: 6px;
   background: rgb(var(--container-bg-color));
   border-radius: 12px;
-  box-shadow: 0 1px 2px rgb(15 23 42 / 4%), 0 4px 16px rgb(15 23 42 / 4%);
+  box-shadow:
+    0 1px 2px rgb(15 23 42 / 4%),
+    0 4px 16px rgb(15 23 42 / 4%);
 }
 
 .settings-tabs__item {
@@ -238,7 +229,9 @@ onMounted(load);
 .settings-card {
   background: rgb(var(--container-bg-color));
   border-radius: 14px;
-  box-shadow: 0 1px 2px rgb(15 23 42 / 4%), 0 8px 24px rgb(15 23 42 / 5%);
+  box-shadow:
+    0 1px 2px rgb(15 23 42 / 4%),
+    0 8px 24px rgb(15 23 42 / 5%);
   overflow: hidden;
 }
 

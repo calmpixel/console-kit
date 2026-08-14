@@ -16,10 +16,7 @@ export function createTablePagination(overrides: PaginationProps = {}): Paginati
 }
 
 /** Hide pager when there is no data; keep header via TABLE_SCROLL_X. */
-export function resolveTablePagination(
-  itemCount: number,
-  pagination: PaginationProps
-): PaginationProps | false {
+export function resolveTablePagination(itemCount: number, pagination: PaginationProps): PaginationProps | false {
   return itemCount > 0 ? pagination : false;
 }
 

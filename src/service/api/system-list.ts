@@ -116,7 +116,10 @@ function buildLogQuery(params: FetchLogsParams) {
   if (params.to?.trim()) query.to = params.to.trim();
   if (params.result) {
     const list = Array.isArray(params.result) ? params.result : [params.result];
-    const joined = list.map(s => String(s).trim()).filter(Boolean).join(',');
+    const joined = list
+      .map(s => String(s).trim())
+      .filter(Boolean)
+      .join(',');
     if (joined) query.result = joined;
   }
   if (params.sort_by) query.sort_by = params.sort_by;

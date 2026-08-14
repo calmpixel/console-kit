@@ -9,7 +9,7 @@ defineOptions({
 
 withDefaults(
   defineProps<{
-    size?: 'tiny' | 'small' | 'medium' | 'large'
+    size?: 'tiny' | 'small' | 'medium' | 'large';
   }>(),
   {
     size: 'small'

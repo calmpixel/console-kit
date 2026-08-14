@@ -22,11 +22,11 @@ pnpm dev
 
 ## 环境文件
 
-| 文件 | 模式 | 关键值 |
-| --- | --- | --- |
-| `.env` | 公共基础 | `VITE_USE_MOCK=false`、`VITE_AUTH_ROUTE_MODE=dynamic` |
-| `.env.test` | dev（`pnpm dev`） | 后端基址 `http://127.0.0.1:18080/api/console/v1` |
-| `.env.prod` | build（`pnpm build`） | 同源 `/api/console/v1` |
+| 文件        | 模式                  | 关键值                                                |
+| ----------- | --------------------- | ----------------------------------------------------- |
+| `.env`      | 公共基础              | `VITE_USE_MOCK=false`、`VITE_AUTH_ROUTE_MODE=dynamic` |
+| `.env.test` | dev（`pnpm dev`）     | 后端基址 `http://127.0.0.1:18080/api/console/v1`      |
+| `.env.prod` | build（`pnpm build`） | 同源 `/api/console/v1`                                |
 
 ## 范围
 
