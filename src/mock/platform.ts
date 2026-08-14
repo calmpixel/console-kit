@@ -635,25 +635,25 @@ export function applyPlatformMock(config: InternalAxiosRequestConfig): boolean {
               name: 'system_settings',
               path: '/system/settings',
               component: 'view.system_settings',
-              meta: { title: '系统设置', icon: 'mdi:tune-variant', order: 4 }
+              meta: { title: '系统设置', icon: 'mdi:tune-variant', order: 1 }
             },
             {
               name: 'system_user',
               path: '/system/user',
               component: 'view.system_user',
-              meta: { title: '用户管理', icon: 'mdi:account-group', order: 1 }
+              meta: { title: '用户管理', icon: 'mdi:account-group', order: 2 }
             },
             {
               name: 'system_role',
               path: '/system/role',
               component: 'view.system_role',
-              meta: { title: '角色管理', icon: 'mdi:shield-account', order: 2 }
+              meta: { title: '角色管理', icon: 'mdi:shield-account', order: 3 }
             },
             {
               name: 'system_menu',
               path: '/system/menu',
               component: 'view.system_menu',
-              meta: { title: '菜单管理', icon: 'mdi:menu', order: 3 }
+              meta: { title: '菜单管理', icon: 'mdi:menu', order: 4 }
             },
             {
               name: 'system_op-log',
