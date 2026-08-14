@@ -5,7 +5,7 @@ import { useBoolean } from '@sa/hooks';
 import { router } from '@/router';
 import { localStg } from '@/utils/storage';
 import { SetupStoreId } from '@/enum';
-import { $t, setLocale } from '@/locales';
+import { setLocale } from '@/locales';
 import { resolveRouteLabel } from '@/utils/route-label';
 import { setDayjsLocale } from '@/locales/dayjs';
 import { useRouteStore } from '../route';

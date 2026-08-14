@@ -227,7 +227,7 @@ async function onUploadSelected(event: Event) {
     return;
   }
   uploading.value = true;
-  const { data, error } = await uploadBackup(file);
+  const { error } = await uploadBackup(file);
   uploading.value = false;
   if (error) return;
   window.$message?.success(`已上传备份：${file.name}`);
@@ -278,12 +278,7 @@ onMounted(load);
     >
       <template #filters>
         <NSpace :size="12" align="center" wrap>
-          <NInput
-            v-model:value="keyword"
-            clearable
-            class="w-260px"
-            placeholder="搜索文件路径 / 备注"
-          >
+          <NInput v-model:value="keyword" clearable class="w-260px" placeholder="搜索文件路径 / 备注">
             <template #prefix>
               <SvgIcon icon="mdi:magnify" class="text-icon" />
             </template>
@@ -311,13 +306,7 @@ onMounted(load);
           </template>
           上传备份
         </NButton>
-        <input
-          ref="uploadInput"
-          type="file"
-          accept=".bak"
-          class="hidden"
-          @change="onUploadSelected"
-        />
+        <input ref="uploadInput" type="file" accept=".bak" class="hidden" @change="onUploadSelected" />
         <TableToolGroup v-model:columns="columnChecks" :loading="loading" @refresh="load" />
       </template>
 

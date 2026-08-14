@@ -233,14 +233,14 @@ export const useNotificationStore = defineStore(SetupStoreId.Notification, () =>
     source.addEventListener('ping', () => {
       touch();
     });
-    source.onerror = () => {
+    source.addEventListener('error', () => {
       connected.value = false;
       if (intentionalClose) return;
       if (source.readyState === EventSource.CLOSED) {
         if (es === source) es = null;
         scheduleReconnect();
       }
-    };
+    });
   }
 
   function forceConnect() {

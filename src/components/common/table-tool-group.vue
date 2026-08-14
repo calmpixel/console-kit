@@ -1,6 +1,4 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>">
-import type { NaiveUI } from '@sa/hooks';
-
 defineOptions({ name: 'TableToolGroup' });
 
 withDefaults(

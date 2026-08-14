@@ -40,6 +40,7 @@ import { renderTableAction, renderTableActions } from '@/components/common/table
 import { resolveTableScrollX } from '@/components/common/table-pagination';
 import { useAdminListQuery } from '@/hooks/common/admin-list-query';
 import { useColumnSetting } from '@/hooks/common/column-setting';
+import { useNaiveForm } from '@/hooks/common/form';
 import { $t } from '@/locales';
 import { useAuthStore } from '@/store/modules/auth';
 import SvgIcon from '@/components/custom/svg-icon.vue';
@@ -233,9 +234,13 @@ function createBaseColumns(): DataTableColumns<AdminUser> {
       sorter: true,
       sortOrder: columnSortOrder('disabled'),
       render: row =>
-        h(NTag, { size: 'small', type: row.disabled ? 'warning' : 'success', bordered: false }, {
-          default: () => (row.disabled ? '禁用' : '正常')
-        })
+        h(
+          NTag,
+          { size: 'small', type: row.disabled ? 'warning' : 'success', bordered: false },
+          {
+            default: () => (row.disabled ? '禁用' : '正常')
+          }
+        )
     },
     {
       title: '创建时间',
@@ -488,7 +493,15 @@ async function maybeUploadAvatar(userId: number) {
   return true;
 }
 
+const { formRef, validate } = useNaiveForm();
+
 async function submit() {
+  try {
+    await validate();
+  } catch {
+    return;
+  }
+
   saving.value = true;
 
   let error: Error | null = null;
@@ -575,12 +588,7 @@ onMounted(load);
     <AdminListPage title="用户管理">
       <template #filters>
         <NSpace :size="12" align="center" wrap>
-          <NInput
-            v-model:value="keyword"
-            clearable
-            class="w-260px"
-            placeholder="搜索用户名 / 显示名"
-          >
+          <NInput v-model:value="keyword" clearable class="w-260px" placeholder="搜索用户名 / 显示名">
             <template #prefix>
               <SvgIcon icon="mdi:magnify" class="text-icon" />
             </template>
@@ -662,10 +670,7 @@ onMounted(load);
       :mask-closable="!saving"
       @after-leave="resetForm"
     >
-      <div
-        v-if="modalMode === 'create' || modalMode === 'edit'"
-        class="mb-18px flex-col items-center gap-8px"
-      >
+      <div v-if="modalMode === 'create' || modalMode === 'edit'" class="mb-18px flex-col items-center gap-8px">
         <div class="user-avatar-picker relative">
           <NUpload
             accept="image/jpeg,image/png,image/webp,image/gif"
@@ -691,20 +696,14 @@ onMounted(load);
               </div>
             </div>
           </NUpload>
-          <button
-            v-if="canClearAvatar"
-            type="button"
-            class="user-avatar-clear"
-            title="清除头像"
-            @click="clearAvatar"
-          >
+          <button v-if="canClearAvatar" type="button" class="user-avatar-clear" title="清除头像" @click="clearAvatar">
             <SvgIcon icon="mdi:close" class="text-14px" />
           </button>
         </div>
         <div class="text-12px opacity-45">点击头像上传，支持 jpg / png / webp / gif，不超过 2MB</div>
       </div>
 
-      <NForm label-placement="left" label-width="88" :model="form" :rules="formRules">
+      <NForm ref="formRef" label-placement="left" label-width="88" :model="form" :rules="formRules">
         <NFormItem v-if="modalMode === 'create' || modalMode === 'edit'" path="username" label="用户名">
           <NInput v-model:value="form.username" placeholder="登录用户名" />
         </NFormItem>

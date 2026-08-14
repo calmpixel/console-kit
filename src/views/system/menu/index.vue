@@ -28,6 +28,7 @@ import {
   type MenuOrderItem
 } from '@/service/api';
 import { useColumnSetting } from '@/hooks/common/column-setting';
+import { useNaiveForm } from '@/hooks/common/form';
 import { $t } from '@/locales';
 import IconSelect from '@/components/common/icon-select.vue';
 import MenuTreeNodes, { type MenuTreeNode } from './menu-tree-nodes.vue';
@@ -106,9 +107,7 @@ const statusFilterOptions: SelectOption[] = [
   { label: '禁用', value: 'disabled' }
 ];
 
-const isFiltering = computed(
-  () => Boolean(keyword.value.trim()) || statusFilter.value !== 'all'
-);
+const isFiltering = computed(() => Boolean(keyword.value.trim()) || statusFilter.value !== 'all');
 
 const modalShow = ref(false);
 const modalMode = ref<'create' | 'edit'>('create');
@@ -382,7 +381,15 @@ async function remove(row: AdminMenu) {
   await load();
 }
 
+const { formRef, validate } = useNaiveForm();
+
 async function submit() {
+  try {
+    await validate();
+  } catch {
+    return;
+  }
+
   saving.value = true;
   let error: Error | null = null;
   let successMsg = '';
@@ -414,12 +421,7 @@ onMounted(load);
     >
       <template #filters>
         <NSpace :size="12" align="center" wrap>
-          <NInput
-            v-model:value="keyword"
-            clearable
-            class="w-280px"
-            placeholder="搜索标题 / 路由名 / 路径"
-          >
+          <NInput v-model:value="keyword" clearable class="w-280px" placeholder="搜索标题 / 路由名 / 路径">
             <template #prefix>
               <SvgIcon icon="mdi:magnify" class="text-icon" />
             </template>
@@ -513,7 +515,7 @@ onMounted(load);
       :mask-closable="!saving"
       @after-leave="resetForm"
     >
-      <NForm label-placement="left" label-width="100" :model="form" :rules="formRules">
+      <NForm ref="formRef" label-placement="left" label-width="100" :model="form" :rules="formRules">
         <NFormItem :label="$t('field.parentMenu')">
           <NSelect
             v-model:value="form.parent_id"

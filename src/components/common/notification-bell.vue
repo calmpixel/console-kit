@@ -121,8 +121,7 @@ function renderHeader(): VNodeChild {
   return h(
     'div',
     {
-      class:
-        'flex items-center justify-between px-12px py-8px border-b border-#efeff5 dark:border-#ffffff1a shrink-0'
+      class: 'flex items-center justify-between px-12px py-8px border-b border-#efeff5 dark:border-#ffffff1a shrink-0'
     },
     [
       h('span', { class: 'text-14px font-medium' }, $t('notification.title')),
@@ -165,9 +164,7 @@ function renderItem(item: (typeof notifyStore.items)[number]): VNodeChild {
           { class: ['text-13px font-medium truncate', item.read ? 'opacity-70' : ''] },
           item.title || item.event
         ),
-        item.body
-          ? h('div', { class: 'text-12px text-#666 dark:text-#aaa mt-2px line-clamp-2' }, item.body)
-          : null,
+        item.body ? h('div', { class: 'text-12px text-#666 dark:text-#aaa mt-2px line-clamp-2' }, item.body) : null,
         h('div', { class: 'text-11px text-#999 mt-4px' }, formatDateTime(item.created_at))
       ]),
       h(
@@ -229,14 +226,11 @@ const options = computed<DropdownOption[]>(() => [
     placement="bottom-end"
     :options="options"
     :show-arrow="false"
-    :menu-props="() => ({
-      class: 'notification-dropdown-menu',
-      style: {
-        width: '360px',
-        padding: '0',
-        overflow: 'hidden'
-      }
-    })"
+    :menu-props="
+      () => ({
+        class: 'notification-dropdown-menu'
+      })
+    "
     @update:show="onDropdownUpdate"
   >
     <div>
@@ -252,7 +246,9 @@ const options = computed<DropdownOption[]>(() => [
 <style>
 /* Dropdown teleports to body — keep header fixed; only NScrollbar overlays. */
 .notification-dropdown-menu.n-dropdown-menu {
+  width: 360px;
   padding: 0 !important;
+  overflow: hidden;
 }
 
 .notification-dropdown-menu .n-dropdown-option {

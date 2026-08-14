@@ -37,6 +37,7 @@ import { renderTableAction, renderTableActions } from '@/components/common/table
 import { resolveTableScrollX } from '@/components/common/table-pagination';
 import { useAdminListQuery } from '@/hooks/common/admin-list-query';
 import { useColumnSetting } from '@/hooks/common/column-setting';
+import { useNaiveForm } from '@/hooks/common/form';
 import { $t } from '@/locales';
 import { cellText } from '@/utils/cell-text';
 import { formatDateTime } from '@/utils/datetime';
@@ -175,9 +176,13 @@ function createBaseColumns(): DataTableColumns<AdminRole> {
       sorter: true,
       sortOrder: columnSortOrder('builtin'),
       render: row =>
-        h(NTag, { size: 'small', type: row.builtin ? 'info' : 'default', bordered: false }, {
-          default: () => (row.builtin ? '是' : '否')
-        })
+        h(
+          NTag,
+          { size: 'small', type: row.builtin ? 'info' : 'default', bordered: false },
+          {
+            default: () => (row.builtin ? '是' : '否')
+          }
+        )
     },
     {
       title: '创建时间',
@@ -272,9 +277,7 @@ const permsExpanded = computed(() => {
   return all.every(k => set.has(String(k)));
 });
 
-const permsAllSelected = computed(
-  () => catalog.value.length > 0 && form.permissions.length >= catalog.value.length
-);
+const permsAllSelected = computed(() => catalog.value.length > 0 && form.permissions.length >= catalog.value.length);
 
 function expandAllPerms() {
   permTreeExpanded.value = [...allPermExpandKeys.value];
@@ -407,7 +410,15 @@ async function batchRemove() {
   await loadRoles();
 }
 
+const { formRef, validate } = useNaiveForm();
+
 async function submit() {
+  try {
+    await validate();
+  } catch {
+    return;
+  }
+
   saving.value = true;
   let error: Error | null = null;
   let successMsg = '';
@@ -456,12 +467,7 @@ onMounted(load);
     <AdminListPage title="角色管理">
       <template #filters>
         <NSpace :size="12" align="center" wrap>
-          <NInput
-            v-model:value="keyword"
-            clearable
-            class="w-260px"
-            placeholder="搜索角色代码 / 名称"
-          >
+          <NInput v-model:value="keyword" clearable class="w-260px" placeholder="搜索角色代码 / 名称">
             <template #prefix>
               <SvgIcon icon="mdi:magnify" class="text-icon" />
             </template>
@@ -487,11 +493,7 @@ onMounted(load);
       </template>
 
       <AdminTableWrap v-slot="{ maxHeight }">
-        <TableSelectionBar
-          v-auth="'platform.role.manage'"
-          :count="selectedIds.length"
-          @clear="checkedKeys = []"
-        >
+        <TableSelectionBar v-auth="'platform.role.manage'" :count="selectedIds.length" @clear="checkedKeys = []">
           <NPopconfirm @positive-click="batchRemove">
             <template #trigger>
               <NButton text type="error" :loading="batchBusy">
@@ -528,7 +530,14 @@ onMounted(load);
       :mask-closable="!saving"
       @after-leave="resetForm"
     >
-      <NForm v-if="modalMode !== 'perms'" label-placement="left" label-width="96" :model="form" :rules="formRules">
+      <NForm
+        v-if="modalMode !== 'perms'"
+        ref="formRef"
+        label-placement="left"
+        label-width="96"
+        :model="form"
+        :rules="formRules"
+      >
         <NFormItem v-if="modalMode === 'create'" path="code" :label="$t('field.code')">
           <NInput v-model:value="form.code" :placeholder="$t('form.roleCodePlaceholder')" />
         </NFormItem>
@@ -566,17 +575,19 @@ onMounted(load);
             <NButton size="tiny" secondary :disabled="!catalog.length" @click="toggleSelectAllPerms">
               <template #icon>
                 <SvgIcon
-                  :icon="permsAllSelected ? 'mdi:checkbox-multiple-blank-outline' : 'mdi:checkbox-multiple-marked-outline'"
+                  :icon="
+                    permsAllSelected ? 'mdi:checkbox-multiple-blank-outline' : 'mdi:checkbox-multiple-marked-outline'
+                  "
                 />
               </template>
               {{ permsAllSelected ? '全不选' : '全选' }}
             </NButton>
           </div>
-          <NText depth="3" class="shrink-0 text-12px">
-            已选 {{ form.permissions.length }} / {{ catalog.length }}
-          </NText>
+          <NText depth="3" class="shrink-0 text-12px">已选 {{ form.permissions.length }} / {{ catalog.length }}</NText>
         </div>
-        <div class="perm-tree-box h-420px w-full overflow-y-auto rounded-8px border border-[var(--n-border-color)] p-8px">
+        <div
+          class="perm-tree-box h-420px w-full overflow-y-auto rounded-8px border border-[var(--n-border-color)] p-8px"
+        >
           <NTree
             v-if="permTree.length"
             :key="permTreeKey"
@@ -607,4 +618,3 @@ onMounted(load);
     </NModal>
   </div>
 </template>
-

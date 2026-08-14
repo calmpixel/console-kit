@@ -9,7 +9,7 @@ declare namespace NaiveUI {
   type TableColumnCheck = import('@sa/hooks').TableColumnCheck;
   type TableColumnFixed = import('@sa/hooks').TableColumnCheck['fixed'];
 
-  type SetTableColumnKey<C, T> = Omit<C, 'key'> & { key: keyof T | (string & {}) };
+  type SetTableColumnKey<C, T> = Omit<C, 'key'> & { key: keyof T | (string & {}) | (number & {}) };
 
   type TableColumnWithKey<T> = SetTableColumnKey<DataTableBaseColumn<T>, T> | SetTableColumnKey<TableColumnGroup<T>, T>;
 

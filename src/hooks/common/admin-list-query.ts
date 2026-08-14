@@ -1,4 +1,4 @@
-import { computed, reactive, ref, watch, type Ref } from 'vue';
+import { computed, ref, shallowReactive, watch, type Ref } from 'vue';
 import type { DataTableSortState, PaginationProps } from 'naive-ui';
 import { createTablePagination, resolveTablePagination } from '@/components/common/table-pagination';
 
@@ -28,7 +28,7 @@ export function useAdminListQuery(options: UseAdminListQueryOptions = {}) {
   const sortBy = ref('');
   const sortOrder = ref<AdminListSortOrder>(false);
 
-  const pagination = reactive(
+  const pagination = shallowReactive(
     createTablePagination({
       page: 1,
       onUpdatePage: (page: number) => {
@@ -80,10 +80,8 @@ export function useAdminListQuery(options: UseAdminListQueryOptions = {}) {
   function tablePagination(itemCount: Ref<number> | (() => number)) {
     return computed((): PaginationProps | false => {
       const count = typeof itemCount === 'function' ? itemCount() : itemCount.value;
-      return resolveTablePagination(count, {
-        ...pagination,
-        itemCount: count
-      });
+      const pager: PaginationProps = { ...pagination, itemCount: count };
+      return resolveTablePagination(count, pager);
     });
   }
 

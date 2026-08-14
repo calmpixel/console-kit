@@ -10,7 +10,6 @@ import {
   NGrid,
   NProgress,
   NSpace,
-  NText,
   type DropdownOption
 } from 'naive-ui';
 import { createReusableTemplate } from '@vueuse/core';
@@ -529,8 +528,7 @@ onUnmounted(() => {
                   :fill-border-radius="4"
                   rail-color="rgba(0,0,0,0.06)"
                 >
-                  {{ formatBytes(d.used_bytes) }} / {{ formatBytes(d.total_bytes) }} ·
-                  {{ diskUsedPct(d).toFixed(1) }}%
+                  {{ formatBytes(d.used_bytes) }} / {{ formatBytes(d.total_bytes) }} · {{ diskUsedPct(d).toFixed(1) }}%
                 </NProgress>
               </div>
             </div>
