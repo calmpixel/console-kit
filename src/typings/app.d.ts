@@ -308,14 +308,6 @@ declare namespace App {
       | Exclude<RouteKey, 'root' | 'not-found'>
       | 'home'
       | 'ops'
-      | 'asset'
-      | 'asset_artifact'
-      | 'asset_client'
-      | 'asset_phone'
-      | 'asset_bridge'
-      | 'asset_session'
-      | 'tenant'
-      | 'tenant_provider'
       | 'system_backup_detail';
 
     type FormMsg = {

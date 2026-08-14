@@ -11,7 +11,7 @@ const ROUTE_DEGREE_SPLITTER = '_';
  * can open them inside the app frame.
  *
  * Soybean `layout.base$view.xxx` only works when route `name` has no `_`
- * (`isSingleLevelRoute`). Names like `tenant_provider` must become:
+ * (`isSingleLevelRoute`). Names like `system_backup_detail` must become:
  *   layout parent (name without `_`) + child `view.xxx`.
  *
  * Only applies to root list items; children are left as-is.

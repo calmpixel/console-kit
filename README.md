@@ -34,5 +34,4 @@ pnpm dev
 
 ## 范围
 
-登录壳、工作台（系统健康）、`views/system/**`、通知铃铛、AdminListPage 列表约定。  
-不含资产/租户/牌局卡片。
+登录壳、工作台（系统健康）、`views/system/**`、通知铃铛、AdminListPage 列表约定。

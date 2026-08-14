@@ -228,12 +228,6 @@ const local: App.I18n.Schema = {
     home: '首页',
     overview: '运行时一览',
     ops: '运维',
-    asset: '资产',
-    asset_artifact: '制品',
-    asset_client: '客户端',
-    asset_phone: '手机',
-    asset_bridge: '桥实例',
-    asset_session: '会话授权',
     system: '系统',
     system_user: '用户',
     system_role: '角色',
@@ -241,9 +235,7 @@ const local: App.I18n.Schema = {
     system_settings: '系统设置',
     'system_op-log': '操作日志',
     system_backup: '备份恢复',
-    system_backup_detail: '备份详情',
-    tenant: '租户',
-    tenant_provider: '提供商'
+    system_backup_detail: '备份详情'
   },
   page: {
     login: {

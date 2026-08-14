@@ -35,4 +35,3 @@ Set `VITE_USE_MOCK` to `true` in `.env` to log in and browse the system manageme
 ## Scope
 
 Login shell, dashboard (system health), `views/system/**`, notification bell, and the AdminListPage list conventions.
-Not included: assets / tenants / game cards.

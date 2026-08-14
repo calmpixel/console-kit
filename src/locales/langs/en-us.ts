@@ -232,12 +232,6 @@ const local: App.I18n.Schema = {
     home: 'Home',
     overview: 'Overview',
     ops: 'Ops',
-    asset: 'Assets',
-    asset_artifact: 'Artifacts',
-    asset_client: 'Clients',
-    asset_phone: 'Phones',
-    asset_bridge: 'Bridges',
-    asset_session: 'Sessions',
     system: 'System',
     system_user: 'Users',
     system_role: 'Roles',
@@ -245,9 +239,7 @@ const local: App.I18n.Schema = {
     system_settings: 'Settings',
     'system_op-log': 'Operation Logs',
     system_backup: 'Backup',
-    system_backup_detail: 'Backup Detail',
-    tenant: 'Tenant',
-    tenant_provider: 'Providers'
+    system_backup_detail: 'Backup Detail'
   },
   page: {
     login: {
