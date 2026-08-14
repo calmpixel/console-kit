@@ -1,7 +1,7 @@
 {
-  "name": "helm",
+  "name": "helm-admin",
   "version": "2.2.0",
-  "description": "Helm：运营后台前端基础壳（Soybean / NaiveUI / Vue3 / Vite / TypeScript）。契约见仓库根目录 docs/GOKIT_API.md。",
+  "description": "HelmAdmin：运营后台前端基础壳（Soybean / NaiveUI / Vue3 / Vite / TypeScript）。契约见仓库根目录 docs/GOKIT_API.md。",
   "keywords": [
     "TypeScript",
     "UnoCSS",
