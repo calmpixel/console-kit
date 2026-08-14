@@ -20,6 +20,7 @@ export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<Ro
   500: () => import("@/views/_builtin/500/index.vue"),
   "iframe-page": () => import("@/views/_builtin/iframe-page/[url].vue"),
   login: () => import("@/views/_builtin/login/index.vue"),
+  home: () => import("@/views/home/index.vue"),
   overview: () => import("@/views/overview/index.vue"),
   system_backup_detail: () => import("@/views/system/backup/detail/[id].vue"),
   system_backup: () => import("@/views/system/backup/index.vue"),

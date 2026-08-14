@@ -7,6 +7,7 @@ import { useAppStore } from '@/store/modules/app';
 import { useThemeStore } from '@/store/modules/theme';
 import { useTabStore } from '@/store/modules/tab';
 import { isPC } from '@/utils/agent';
+import { GLOBAL_TAB_WHEEL_SPEED_RATIO } from '@/constants/app';
 import BetterScroll from '@/components/custom/better-scroll.vue';
 import ContextMenu from './context-menu.vue';
 
@@ -69,6 +70,17 @@ function scrollByClientX(clientX: number) {
 
     scrollBy(update, 0, 300);
   }
+}
+
+// Convert vertical wheel delta into horizontal tab scroll
+function handleWheel(e: WheelEvent) {
+  const bs = bsScroll.value?.instance;
+  if (!bs) return;
+  // Do not intercept when there is no horizontal scroll space, keep native vertical scrolling
+  if (bs.maxScrollX === 0) return;
+  e.preventDefault();
+  // deltaY > 0 (scroll down) -> tabs slide left; deltaY < 0 (scroll up) -> tabs slide right
+  bs.scrollBy(-e.deltaY * GLOBAL_TAB_WHEEL_SPEED_RATIO, 0, 0);
 }
 
 function getContextMenuDisabledKeys(tabId: string) {
@@ -186,29 +198,16 @@ init();
 
 <template>
   <DarkModeContainer class="size-full flex-y-center px-16px shadow-tab">
-    <div ref="bsWrapper" class="h-full flex-1-hidden">
+    <div ref="bsWrapper" class="h-full flex-1-hidden" @wheel="handleWheel">
       <BetterScroll ref="bsScroll" :options="{ scrollX: true, scrollY: false, click: !isPCFlag }" @click="removeFocus">
-        <div
-          ref="tabRef"
-          class="h-full flex pr-18px"
-          :class="[
-            themeStore.tab.mode === 'chrome' || themeStore.tab.mode === 'slider' ? 'items-end' : 'items-center gap-12px'
-          ]"
-        >
-          <PageTab
-            v-for="tab in tabStore.tabs"
-            :key="tab.id"
-            :[TAB_DATA_ID]="tab.id"
-            :mode="themeStore.tab.mode"
-            :dark-mode="themeStore.darkMode"
-            :active="tab.id === tabStore.activeTabId"
-            :active-color="themeStore.themeColor"
-            :closable="!tabStore.isTabRetain(tab.id)"
-            @pointerdown="switchTab($event, tab)"
-            @mousedown="handleMousedown($event, tab)"
-            @close="handleCloseTab(tab)"
-            @contextmenu="handleContextMenu($event, tab.id)"
-          >
+        <div ref="tabRef" class="h-full flex pr-18px" :class="[
+          themeStore.tab.mode === 'chrome' || themeStore.tab.mode === 'slider' ? 'items-end' : 'items-center gap-12px'
+        ]">
+          <PageTab v-for="tab in tabStore.tabs" :key="tab.id" :[TAB_DATA_ID]="tab.id" :mode="themeStore.tab.mode"
+            :dark-mode="themeStore.darkMode" :active="tab.id === tabStore.activeTabId"
+            :active-color="themeStore.themeColor" :closable="!tabStore.isTabRetain(tab.id)"
+            @pointerdown="switchTab($event, tab)" @mousedown="handleMousedown($event, tab)" @close="handleCloseTab(tab)"
+            @contextmenu="handleContextMenu($event, tab.id)">
             <template #prefix>
               <SvgIcon :icon="tab.icon" :local-icon="tab.localIcon" class="inline-block align-text-bottom text-16px" />
             </template>
@@ -220,14 +219,9 @@ init();
     <ReloadButton :loading="!appStore.reloadFlag" @click="refresh" />
     <FullScreen :full="appStore.fullContent" @click="appStore.toggleFullContent" />
   </DarkModeContainer>
-  <ContextMenu
-    :visible="dropdown.visible"
-    :tab-id="dropdown.tabId"
-    :disabled-keys="getContextMenuDisabledKeys(dropdown.tabId)"
-    :x="dropdown.x"
-    :y="dropdown.y"
-    @update:visible="handleDropdownVisible"
-  />
+  <ContextMenu :visible="dropdown.visible" :tab-id="dropdown.tabId"
+    :disabled-keys="getContextMenuDisabledKeys(dropdown.tabId)" :x="dropdown.x" :y="dropdown.y"
+    @update:visible="handleDropdownVisible" />
 </template>
 
 <style scoped></style>
