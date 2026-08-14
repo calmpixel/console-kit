@@ -128,7 +128,7 @@ function getSiderAndCollapsedWidth(isCollapsed: boolean) {
     :header-height="themeStore.header.height"
     :tab-visible="themeStore.tab.visible"
     :tab-height="themeStore.tab.height"
-    :content-class="appStore.contentXScrollable ? 'min-h-0 overflow-x-hidden' : 'min-h-0'"
+    :content-class="appStore.contentXScrollable ? 'overflow-x-hidden' : ''"
     :sider-visible="siderVisible"
     :sider-width="siderWidth"
     :sider-collapsed-width="siderCollapsedWidth"

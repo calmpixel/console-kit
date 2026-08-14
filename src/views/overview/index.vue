@@ -547,31 +547,38 @@ onUnmounted(() => {
   background: #c2c2c2;
   transition: background-color 0.3s;
 }
+
 .sse-live-dot.is-on {
   background: #67c23a;
   animation: sse-live-pulse 1.8s ease-out infinite;
 }
+
 @keyframes sse-live-pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(103, 194, 58, 0.45);
   }
+
   70% {
     box-shadow: 0 0 0 8px rgba(103, 194, 58, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(103, 194, 58, 0);
   }
 }
+
 .disk-fs-item {
   padding: 10px 12px;
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.03);
 }
+
 .disk-fs-row {
   display: flex;
   align-items: center;
   gap: 16px;
 }
+
 .disk-fs-name {
   display: flex;
   align-items: center;
@@ -579,15 +586,18 @@ onUnmounted(() => {
   flex: 0 0 160px;
   max-width: 200px;
 }
+
 .disk-fs-bar {
   flex: 1 1 auto;
   min-width: 0;
 }
+
 .disk-fs-bar :deep(.n-progress-icon) {
   font-size: 12px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
+
 html.dark .disk-fs-item {
   background: rgba(255, 255, 255, 0.06);
 }
