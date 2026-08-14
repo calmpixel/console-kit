@@ -9,7 +9,7 @@ HelmAdmin：运营后台前端基础壳（Soybean / Naive UI）。后端接口�
 ## 运行
 
 ```bash
-cd console-kit
+cd helm-admin
 pnpm install
 pnpm dev
 ```

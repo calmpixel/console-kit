@@ -9,7 +9,7 @@ HelmAdmin, the ops-console frontend base shell (Soybean / Naive UI). Backend API
 ## Running
 
 ```bash
-cd console-kit
+cd helm-admin
 pnpm install
 pnpm dev
 ```
