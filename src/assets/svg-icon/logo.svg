@@ -1,6 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <path d="M64 6 L122 64 L6 64 Z" fill="currentColor"/>
-  <path d="M122 64 L64 6 L64 122 Z" fill="currentColor" opacity="0.7"/>
-  <path d="M64 122 L6 64 L122 64 Z" fill="currentColor" opacity="0.45"/>
-  <path d="M6 64 L64 122 L64 6 Z" fill="currentColor" opacity="0.7"/>
+  <rect x="24" y="24" width="80" height="80" rx="12" transform="rotate(45 64 64)" fill="currentColor"/>
+  <path d="M64 22 L68 34 L64 46 L60 34 Z" fill="#fff"/>
+  <path d="M64 106 L68 94 L64 82 L60 94 Z" fill="#fff"/>
+  <path d="M22 64 L34 60 L46 64 L34 68 Z" fill="#fff"/>
+  <path d="M106 64 L94 60 L82 64 L94 68 Z" fill="#fff"/>
+  <rect x="59" y="59" width="10" height="10" rx="3" transform="rotate(45 64 64)" fill="#fff"/>
 </svg>
