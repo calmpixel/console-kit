@@ -53,7 +53,7 @@ async function load() {
   if (error) return;
   const items = data?.items || {};
   form.value = {
-    'site.name': items['site.name'] ?? (import.meta.env.VITE_APP_TITLE || '控制台'),
+    'site.name': items['site.name'] ?? (import.meta.env.VITE_APP_TITLE || 'Helm'),
     'site.notice': items['site.notice'] ?? '',
     'summary.ttl_hint': items['summary.ttl_hint'] ?? ''
   };

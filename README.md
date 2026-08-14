@@ -1,10 +1,10 @@
-# console-kit
+# Helm
 
 <div align="center">
   <span><a href="./README.en_US.md">English</a> | 中文</span>
 </div>
 
-控制台前端基础壳（Soybean / Naive UI）。后端接口契约见 `gokit` 仓库的 `docs/GOKIT_API.md` 与 `docs/console-frontend-style.md`。
+Helm：运营后台前端基础壳（Soybean / Naive UI）。后端接口契约见 `gokit` 仓库的 `docs/GOKIT_API.md` 与 `docs/console-frontend-style.md`。
 
 ## 运行
 

@@ -337,7 +337,7 @@ const db = {
       action: 'settings.update',
       target_type: 'settings',
       target_id: 'site',
-      detail: { 'site.name': 'Console' },
+      detail: { 'site.name': 'Helm' },
       ip: '127.0.0.1',
       method: 'PUT',
       path: '/api/console/v1/settings',
@@ -453,7 +453,7 @@ const db = {
     }
   ] as MockNotification[],
   settings: {
-    'site.name': 'Console',
+    'site.name': 'Helm',
     'site.notice': '',
     'summary.ttl_hint': '60s'
   } as Record<string, string>
@@ -703,7 +703,7 @@ export function applyPlatformMock(config: InternalAxiosRequestConfig): boolean {
 
   // ---------- branding ----------
   if (method === 'get' && url.includes('/branding')) {
-    return respond({ site_title: import.meta.env.VITE_APP_TITLE || 'Console', logo_text: 'Platform' });
+    return respond({ site_title: import.meta.env.VITE_APP_TITLE || 'Helm', logo_text: 'Helm' });
   }
 
   // ---------- users ----------

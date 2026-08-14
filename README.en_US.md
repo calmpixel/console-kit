@@ -2,9 +2,9 @@
   <span><a href="./README.md">中文</a> | English</span>
 </div>
 
-# console-kit
+# Helm
 
-Console frontend base shell (Soybean / Naive UI). Backend API contracts live in the `gokit` repository's `docs/GOKIT_API.md` and `docs/console-frontend-style.md`.
+Helm, the ops-console frontend base shell (Soybean / Naive UI). Backend API contracts live in the `gokit` repository's `docs/GOKIT_API.md` and `docs/console-frontend-style.md`.
 
 ## Running
 

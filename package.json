@@ -1,7 +1,7 @@
 {
-  "name": "console-kit",
+  "name": "helm",
   "version": "2.2.0",
-  "description": "控制台前端基础壳（Soybean / NaiveUI / Vue3 / Vite / TypeScript）。契约见仓库根目录 docs/GOKIT_API.md。",
+  "description": "Helm：运营后台前端基础壳（Soybean / NaiveUI / Vue3 / Vite / TypeScript）。契约见仓库根目录 docs/GOKIT_API.md。",
   "keywords": [
     "TypeScript",
     "UnoCSS",
