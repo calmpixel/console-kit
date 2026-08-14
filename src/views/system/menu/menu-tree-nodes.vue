@@ -23,7 +23,7 @@ const props = withDefaults(
     /** Visible data columns from column setting (handle always shown). */
     visibleCols?: Set<MenuColKey>;
   }>(),
-  { depth: 0, disabled: false }
+  { depth: 0, disabled: false, visibleCols: undefined }
 );
 
 const emit = defineEmits<{
