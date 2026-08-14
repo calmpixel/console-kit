@@ -68,11 +68,11 @@ function getLogoSvg() {
       >
         <g>
           <rect x="24" y="24" width="80" height="80" rx="12" transform="rotate(45 64 64)" fill="url(#loadingLogoGradient)" />
-          <path d="M64 22 L68 34 L64 46 L60 34 Z" fill="var(--logo-color-900)" />
-          <path d="M64 106 L68 94 L64 82 L60 94 Z" fill="var(--logo-color-900)" />
-          <path d="M22 64 L34 60 L46 64 L34 68 Z" fill="var(--logo-color-900)" />
-          <path d="M106 64 L94 60 L82 64 L94 68 Z" fill="var(--logo-color-900)" />
-          <rect x="59" y="59" width="10" height="10" rx="3" transform="rotate(45 64 64)" fill="var(--logo-color-900)" />
+          <path d="M64 22 L68 34 L64 46 L60 34 Z" fill="#fff" />
+          <path d="M64 106 L68 94 L64 82 L60 94 Z" fill="#fff" />
+          <path d="M22 64 L34 60 L46 64 L34 68 Z" fill="#fff" />
+          <path d="M106 64 L94 60 L82 64 L94 68 Z" fill="#fff" />
+          <rect x="59" y="59" width="10" height="10" rx="3" transform="rotate(45 64 64)" fill="#fff" />
         </g>
         <defs>
           <linearGradient
