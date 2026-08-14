@@ -26,6 +26,10 @@ export const request = createFlatRequest(
     } as RequestInstanceState,
     transform(response: AxiosResponse<any>) {
       const body = response.data;
+      // Blob responses (download) pass through untouched
+      if (body instanceof Blob) {
+        return body;
+      }
       // Platform API: { ok, ...fields } — return whole body for callers to map
       if (body && typeof body === 'object' && 'ok' in body) {
         return body;
@@ -48,6 +52,10 @@ export const request = createFlatRequest(
     },
     isBackendSuccess(response) {
       const body = response.data;
+      // Blob responses (download) are always success
+      if (body instanceof Blob) {
+        return true;
+      }
       if (body && typeof body === 'object' && 'ok' in body) {
         return body.ok === true;
       }
