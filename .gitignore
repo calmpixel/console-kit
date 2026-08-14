@@ -37,3 +37,6 @@ src-tauri/target
 
 # 模板自带的压缩包，不入库
 index.zip
+
+# ===== 自动生成文件（由 unplugin-vue-components 运行时重新生成，勿入库）=====
+src/typings/components.d.ts
